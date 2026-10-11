@@ -13,10 +13,11 @@ public class Movement : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask whatIsGround;
     private bool grounded;
+     private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        
+       anim=GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
@@ -45,6 +46,11 @@ public class Movement : MonoBehaviour
 }
         
     }
+    anim.SetFloat("Speed",Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+    
+    anim.SetFloat("Height",GetComponent<Rigidbody2D>().velocity.x);
+    anim.SetBool("Grounded",grounded);
+
     }
     void Jump()
 {
